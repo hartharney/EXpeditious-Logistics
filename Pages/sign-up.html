@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="utf-8" />
+    <title>Register | Expeditious Logistics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Courier DEPRIXA-Integral Web System">
+    <meta name="author" content="Jaomweb">
+    <meta name="description" content="">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/uploads/favicon.png">
+    <!-- Bootstrap -->
+    <link href="assets/css_main_deprixa/main_deprixa/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="assets/css_main_deprixa/main_deprixa/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" /> 
+    <!-- Main css --> 
+    <link href="assets/css_main_deprixa/main_deprixa/css/style.css" rel="stylesheet" type="text/css" />
+    <!-- Main js --> 
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-ui.js"></script>
+    <script src="assets/js/jquery.ui.touch-punch.js"></script>
+    <script src="assets/js/jquery.wysiwyg.js"></script>
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/checkbox.js"></script>
+
+    </head>
+
+<body>
+
+
+        <!-- Loader -->
+        <div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Loader -->
+        
+        <!-- Navbar STart -->
+        <header id="topnav" class="defaultscroll sticky">
+            <div class="container">
+                <!-- Logo container-->
+                <div>
+                   <a class="logo" href="/"><img src="assets/uploads/1674298997_logoaviation.png" alt="Aviation Logistics" width="190" height="45"/></a>
+                </div>                 
+
+                <div class="menu-extras">
+                    <div class="menu-item">
+                        <!-- Mobile menu toggle-->
+                        <a class="navbar-toggle">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                        <!-- End mobile menu toggle-->
+                    </div>
+                </div>
+				<div id="navigation">
+                    <!-- Navigation Menu-->   
+                    <ul class="navigation-menu">
+                        <li><a href="/">Home</a></li>
+                        
+                        <li><a href="/tracking"><i class="mdi mdi-package-variant-closed"></i> Tracking</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <!-- Navbar End -->
+        
+        <!-- Hero Start -->
+        <section class="bg-home">
+            <div class="home-center">
+                <div class="home-desc-center">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 col-md-5">
+                                <div class="mr-lg-6">   
+                                    <img src="assets/css_main_deprixa/images/user/signup.png" class="img-fluid" alt="">
+                                </div>
+                            </div>
+								
+                            <div class="col-lg-5 col-md-7 mt-4 mt-sm-5 pt-2 pt-sm-3">
+								                                <div class="login_page bg-white shadow rounded p-4">
+                                    <div class="text-center">
+                                        <h4 class="mb-4">Register now!</h4>
+										<p>Let's set up your account in just a couple of steps.</p>										
+                                    </div>
+									<div id="resultados_ajax"></div>
+									<br><br>	
+                                    <form class="login-form" id="new_register" name="new_register" method="post">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">                                               
+                                                    <label>Name <span class="text-danger">*</span></label>
+                                                    <i class="mdi mdi-account ml-3 icons"></i>
+                                                    <input type="text" class="form-control pl-5" placeholder="Full Name" name="fname" id="fname">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">                                                
+                                                    <label>Surname <span class="text-danger">*</span></label>
+                                                    <i class="mdi mdi-account ml-3 icons"></i>
+                                                    <input type="text" class="form-control pl-5" placeholder="Full Surname" name="lname" id="lname">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group position-relative">
+                                                    <label>E-mail <span class="text-danger">*</span></label>
+                                                    <i class="mdi mdi-mail-ru ml-3 icons"></i>
+                                                    <input type="email" class="form-control pl-5" placeholder="Email" name="email" id="email" >
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">                                                
+                                                    <label>Country <span class="text-danger">*</span></label>
+                                                   
+                                                    <input type="text" class="form-control pl-5" placeholder="Country" name="country" id="country" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">                                                
+                                                    <label>City <span class="text-danger">*</span></label>
+                                                   
+                                                    <input type="text" class="form-control pl-5" placeholder="City" name="city" id="city" required>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">                                                
+                                                    <label>Zip code <span class="text-danger">*</span></label>
+                                                   
+                                                    <input type="text" class="form-control pl-5" placeholder="Zip code" name="postal" id="postal" required>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">                                                
+                                                    <label>Address <span class="text-danger">*</span></label>
+                                                   
+                                                    <input type="text" class="form-control pl-5" placeholder="Address" name="address" id="address" required>
+                                                </div>
+                                            </div>
+
+
+                                           
+											<div class="col-md-12">
+                                                <div class="form-group position-relative">                                               
+                                                    <label>Username <span class="text-danger">*</span></label>
+                                                    <i class="mdi mdi-account ml-3 icons"></i>
+                                                    <input type="text" class="form-control pl-5" placeholder="Username" name="username" id="username">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">
+                                                    <label>Password <span class="text-danger">*</span></label>
+                                                    <i class="mdi mdi-key ml-3 icons"></i>
+                                                    <input type="password" class="form-control pl-5" placeholder="Password" name="pass" id="pass">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">
+                                                    <label>Confirm Password <span class="text-danger">*</span></label>
+                                                    <i class="mdi mdi-key ml-3 icons"></i>
+                                                    <input type="password" class="form-control pl-5" name="pass2" id="pass2" placeholder="Confirm Password">
+                                                </div>
+                                            </div>
+
+											
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="terms" name="terms" value="yes">
+                                                        <label class="custom-control-label" for="terms">You accept <a href="#" class="text-primary"> terms and conditions</a></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <button class="btn btn-primary rounded w-100" name="dosubmit">Register</button>
+												<input name="locker" type="hidden"id="locker" value="646290" />
+												
+                                            </div>
+                                            <div class="col-lg-12 mt-4 text-center">
+                                                
+                                            </div>
+                                            <div class="mx-auto">
+                                                <p class="mb-0 mt-3"><small class="text-dark mr-2">Do you already have an account? </small> <a href="/login" class="text-dark font-weight-bold">Sign in</a></p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+								
+							</div> <!--end col-->	
+
+                        </div><!--end row-->
+
+                    </div> <!--end container-->
+
+                </div>
+            </div>
+            <br><br><br>
+            <footer class="text-center">
+                &copy 2023 Expeditious Logistics - All Rights Reserved            </footer>
+        </section><!--end section-->
+
+        <!-- Hero End -->
+
+        <!-- Back to top -->
+        <a href="#" class="back-to-top rounded text-center" id="back-to-top"> 
+            <i class="mdi mdi-chevron-up d-block"> </i> 
+        </a>
+        <!-- Back to top -->
+
+
+        <!-- javascript -->
+        <script src="assets/css_main_deprixa/main_deprixa/js/jquery.min.js"></script>
+        <script src="assets/css_main_deprixa/main_deprixa/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/css_main_deprixa/main_deprixa/js/jquery.easing.min.js"></script>
+        <script src="assets/css_main_deprixa/main_deprixa/js/scrollspy.min.js"></script>
+        <!-- Main Js -->
+        <script src="assets/css_main_deprixa/main_deprixa/js/app.js"></script> 
+
+        <script src="dataJs/sign-up.js"></script> 
+
+    </body>
+</html>

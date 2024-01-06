@@ -1,0 +1,201 @@
+<!-- views/details.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Track Shipment | Expeditious Logistics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Courier DEPRIXA-Integral Web System">
+    <meta name="author" content="Jaomweb">
+    <meta name="description" content="">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/uploads/favicon.png">
+    <!-- Bootstrap -->
+    <link href="assets/css_main_deprixa/main_deprixa/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="assets/css_main_deprixa/main_deprixa/css/materialdesignicons.min.css" rel="stylesheet"
+        type="text/css" />
+    <!-- Main css -->
+    <link href="assets/css_main_deprixa/main_deprixa/css/style.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        #track {
+            margin-top: 150px;
+        }
+
+        #topnav {
+            background-color: #fff;
+        }
+
+        #shipment {
+            max-width: 600px;
+            margin: 10px 100px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tracking- {
+            display: flex;
+        }
+
+        #trackingNumber {
+            margin: 0.3px 10px;
+        }
+
+        #container {
+            max-width: 600px;
+            margin: 0px 100px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            background-color: #a8d38d;
+            color: #fff;
+            padding-left: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .tracking-info {
+            margin-bottom: 16px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        p {
+            margin: 8px 0;
+        }
+
+        @media (max-width: 600px) {
+            #container {
+                margin: 20px;
+            }
+
+            #shipment {
+                max-width: 600px;
+                margin: 20px;
+                margin-top: 70px;
+                padding: 10px;
+            }
+
+            #track {
+                margin-top: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="topnav" class="defaultscroll sticky ">
+        <div class="container">
+            <div>
+                <a class="logo" href="index-2.html"><img src="assets/uploads/1674298997_logoaviation.png"
+                        alt="Aviation Logistics" width="190" height="45" /></a>
+            </div>
+
+            <div class="menu-extras">
+                <div class="menu-item">
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="navigation">
+                <ul class="navigation-menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tracking"><i class="mdi mdi-package-variant-closed"></i> Tracking</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div id="track">
+        <div id="shipment">
+            <h2>Shipment Tracking Information</h2>
+            <div class="tracking-">
+                <label>Tracking Number:</label>
+               <div>
+                 <p>
+                    <%= shipping.shipment_number %>
+                </p>
+               </div>
+            </div>
+            <div class="tracking-">
+                <label>Status:</label>
+                <div>
+                    <p>
+                        <%= shipping.status %>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <div class="tracking-info">
+                <h3>Sender Information</h3>
+                <label>Origin:</label>
+                <p>
+                    <%= shipping.origin_city %>
+                </p>
+
+                <label>Shipping Date:</label>
+                <p>
+                    <%= shipping.shipping_date %>
+                </p>
+
+                <label>Sender Name:</label>
+                <p>
+                    <%= shipping.sender_name %>
+                </p>
+
+                <label>Sender Address:</label>
+                <p>
+                    <%= shipping.sender_address %>
+                </p>
+            </div>
+
+            <div class="tracking-info">
+                <h3>Recipient Information</h3>
+
+                <label>Destination:</label>
+                <p>
+                    <%= shipping.delivery_city %>
+                </p>
+
+                <label>Recipient Name:</label>
+                <p>
+                    <%= shipping.recipient_name %>
+                </p>
+
+                <label>Recipient Address:</label>
+                <p>
+                    <%= shipping.recipient_address %>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
