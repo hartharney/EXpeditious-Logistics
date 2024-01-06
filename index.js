@@ -151,7 +151,7 @@ app.use("/shipping/:id", verifyUserMiddleware);
 
 app.get("/", (req, res) => {
   const indexPath = path.join(__dirname, "Pages", "index.html");
-  res.sendFile(indexPath);
+  return res.sendFile(indexPath);
 });
 app.get("/packaging", (req, res) => {
   const indexPath = path.join(__dirname, "Pages", "packaging.html");
