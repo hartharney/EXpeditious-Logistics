@@ -312,7 +312,7 @@ app.post("/shipping", async (req, res) => {
   }
 });
 
-app.get("/track", async (req, res) => {
+app.post("/track", async (req, res) => {
   const { order_track, trackingType } = req.body;
 
   if (!order_track || !trackingType) {
@@ -321,7 +321,9 @@ app.get("/track", async (req, res) => {
   }
 
   try {
-    const shipping = await Shipping.findOne({ shipment_number: order_track });
+    const shipping = await Shipping.findOne({
+      where: { shipment_number: order_track },
+    });
 
     if (!shipping) {
       return res.status(404).json({ message: "Shipping not found" });
