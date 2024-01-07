@@ -312,7 +312,7 @@ app.post("/shipping", async (req, res) => {
   }
 });
 
-app.post("/track", async (req, res) => {
+app.get("/track", async (req, res) => {
   const { order_track, trackingType } = req.body;
 
   if (!order_track || !trackingType) {
@@ -329,7 +329,7 @@ app.post("/track", async (req, res) => {
 
     const detailsPath = path.join(__dirname, "Pages", "details.html");
 
-    res.status(200).render("details", { shipping });
+    return res.status(200).render("details", { shipping });
   } catch (error) {
     console.error("Error processing tracking request:", error);
     const indexPath = path.join(__dirname, "Pages", "404.html");
