@@ -341,32 +341,29 @@ app.post("/shipping", async (req, res) => {
 //   }
 // });
 
-// app.get("/details", async (req, res) => {
-//   try {
-//     const { shipment_number } = req.query;
+app.get("/details", async (req, res) => {
+  try {
+    const { shipment_number } = req.query;
 
-//     const shippingDetails = await Shipping.findOne({
-//       where: { shipment_number },
-//     });
+    const shippingDetails = await Shipping.findOne({
+      where: { shipment_number },
+    });
 
-//     if (!shippingDetails) {
-//       return res.status(404).send("Shipping details not found");
-//     }
-
-//     const detailsPath = path.join(__dirname, "Pages", "details.html");
-//     res.status(200).sendFile(detailsPath, { shipping: shippingDetails });
-//   } catch (error) {
-//     console.error("Error fetching shipping details:", error);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
+    if (!shippingDetails) {
+      return res.status(404).send("Shipping details not found");
+    }
+    res.status(200).render("details.ejs", { shipping: shippingDetails });
+  } catch (error) {
+    console.error("Error fetching shipping details:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 app.post("/track", async (req, res) => {
   const { order_track, trackingType } = req.body;
 
   if (!order_track || !trackingType) {
-    const indexPath = path.join(__dirname, "Pages", "trackb61e.html");
-    return res.status(404).sendFile(indexPath);
+    return res.status(404).redirect("/not-found");
   }
 
   try {
@@ -375,11 +372,13 @@ app.post("/track", async (req, res) => {
     });
 
     if (!shipping) {
-      return res.status(404).json({ message: "Shipping not found" });
+      return res.status(404).redirect("/not-found");
     }
 
     // Send JSON response with shipping details
-    return res.status(200).json({ shipping });
+    return res
+      .status(200)
+      .redirect(`/details?shipment_number=${shipping.shipment_number}`);
   } catch (error) {
     console.error("Error processing tracking request:", error);
     const indexPath = path.join(__dirname, "Pages", "404.html");
