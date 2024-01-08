@@ -312,6 +312,55 @@ app.post("/shipping", async (req, res) => {
   }
 });
 
+// app.post("/track", async (req, res) => {
+//   const { order_track, trackingType } = req.body;
+
+//   if (!order_track || !trackingType) {
+//     const indexPath = path.join(__dirname, "Pages", "trackb61e.html");
+//     return res.status(404).sendFile(indexPath);
+//   }
+
+//   try {
+//     const shipping = await Shipping.findOne({
+//       where: { shipment_number: order_track },
+//     });
+
+//     if (!shipping) {
+//       return res.status(404).json({ message: "Shipping not found" });
+//     }
+
+//     // const detailsPath = path.join(__dirname, "Pages", "details.html");
+
+//     // return res.status(200).render("details", { shipping });
+
+//     return res.status(200).json({ shipping });
+//   } catch (error) {
+//     console.error("Error processing tracking request:", error);
+//     const indexPath = path.join(__dirname, "Pages", "404.html");
+//     res.status(500).sendFile(indexPath);
+//   }
+// });
+
+// app.get("/details", async (req, res) => {
+//   try {
+//     const { shipment_number } = req.query;
+
+//     const shippingDetails = await Shipping.findOne({
+//       where: { shipment_number },
+//     });
+
+//     if (!shippingDetails) {
+//       return res.status(404).send("Shipping details not found");
+//     }
+
+//     const detailsPath = path.join(__dirname, "Pages", "details.html");
+//     res.status(200).sendFile(detailsPath, { shipping: shippingDetails });
+//   } catch (error) {
+//     console.error("Error fetching shipping details:", error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// });
+
 app.post("/track", async (req, res) => {
   const { order_track, trackingType } = req.body;
 
@@ -329,33 +378,12 @@ app.post("/track", async (req, res) => {
       return res.status(404).json({ message: "Shipping not found" });
     }
 
-    const detailsPath = path.join(__dirname, "Pages", "details.html");
-
-    return res.status(200).render("details", { shipping });
+    // Send JSON response with shipping details
+    return res.status(200).json({ shipping });
   } catch (error) {
     console.error("Error processing tracking request:", error);
     const indexPath = path.join(__dirname, "Pages", "404.html");
     res.status(500).sendFile(indexPath);
-  }
-});
-
-app.get("/details", async (req, res) => {
-  try {
-    const { shipment_number } = req.query;
-
-    const shippingDetails = await Shipping.findOne({
-      where: { shipment_number },
-    });
-
-    if (!shippingDetails) {
-      return res.status(404).send("Shipping details not found");
-    }
-
-    const detailsPath = path.join(__dirname, "Pages", "details.html");
-    res.status(200).sendFile(detailsPath, { shipping: shippingDetails });
-  } catch (error) {
-    console.error("Error fetching shipping details:", error);
-    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
