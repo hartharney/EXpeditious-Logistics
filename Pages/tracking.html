@@ -134,13 +134,12 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="responseModalLabel">Tracking Response</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- Response content will appear here -->
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -166,7 +165,7 @@
     <!-- Main Js -->
     <script src="assets/css_main_deprixa/main_deprixa/js/app.js"></script> 
 
-    <!-- <script src="dataJs/tracking.js"></script> -->
+  
 <script>
     $(document).ready(function () {
         $('#ib_form').submit(function (event) {
@@ -175,53 +174,60 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/track', // Update with your endpoint
+                url: '/track', 
                 data: formData,
                 success: function (response) {
-                    // Update modal body with tracking details
                     $('#responseModal .modal-body').html(`
                         <div id="track">
                             <div id="shipment">
-                                <h2>Shipment Tracking Information</h2>
+                                <h4>Shipment Tracking Information</h4>
                                 <div class="tracking-">
-                                    <label>Tracking Number:</label>
-                                    <div>
-                                        <p>${response.shipping.shipment_number}</p>
-                                    </div>
+                                    <label><b>Tracking Number:  </b><span>${response.shipping.shipment_number}</span></label>
                                 </div>
                                 <div class="tracking-">
-                                    <label>Status:</label>
-                                    <div>
-                                        <p>${response.shipping.status}</p>
-                                    </div>
+                                    <label><b>Status:  </b><span>${response.shipping.status}</span></label>
                                 </div>
                             </div>
 
                             <div id="container">
                                 <div class="tracking-info">
-                                    <h3>Sender Information</h3>
-                                    <label>Origin:</label>
-                                    <p>${response.shipping.origin_city}</p>
-                                    <!-- Add more sender details as needed -->
+                                    <h5>Sender Information</h5>
+                                    <div>
+                                        <label><b>Origin: </b><span>${response.shipping.origin_city}</span></label>
+                                    </div>
+                                    
+                                    <div>
+                                        <label><b>Date:  </b><span>${response.shipping.shipping_date}</span></label>
+                                   </div>
+                            
+                                   <div>
+                                    <label><b>Sender Name:  </b><span>${response.shipping.sender_name}</span></label>
+                                   </div>
 
-                                    <!-- ... -->
-
+                                    <div>
+                                    <label><b>Sender Address:  </b><span>${response.shipping.sender_address}</span></label>
+                                   </div>
                                 </div>
 
                                 <div class="tracking-info">
-                                    <h3>Recipient Information</h3>
-                                    <label>Destination:</label>
-                                    <p>${response.shipping.delivery_city}</p>
-                                    <!-- Add more recipient details as needed -->
-
-                                    <!-- ... -->
-
+                                    <h5>Recipient Information</h5>
+                                    <div>
+                                        <label><b>Destination:  </b><span>${response.shipping.delivery_city}</span></label>
+                                   </div>
+                                  
+                                   <div>
+                                        <label><b>Recipient Name:  </b><span>${response.shipping.recipient_name}</span></label>
+                                   </div>
+                       
+                                   <div>
+                                        <label><b>Recipient Address: </b><span>${response.shipping.recipient_address}</span></label>
+                                    </div>
+                
                                 </div>
                             </div>
                         </div>
                     `);
 
-                    // Show the modal
                     $('#responseModal').modal('show');
                 },
                 error: function (error) {
