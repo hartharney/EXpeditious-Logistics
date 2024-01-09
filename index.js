@@ -341,24 +341,6 @@ app.post("/shipping", async (req, res) => {
 //   }
 // });
 
-app.get("/details", async (req, res) => {
-  try {
-    const { shipment_number } = req.query;
-
-    const shippingDetails = await Shipping.findOne({
-      where: { shipment_number },
-    });
-
-    if (!shippingDetails) {
-      return res.status(404).send("Shipping details not found");
-    }
-    res.status(200).render("details.ejs", { shipping: shippingDetails });
-  } catch (error) {
-    console.error("Error fetching shipping details:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
-
 app.post("/track", async (req, res) => {
   const { order_track, trackingType } = req.body;
 
@@ -374,16 +356,46 @@ app.post("/track", async (req, res) => {
     if (!shipping) {
       return res.status(404).redirect("/not-found");
     }
+    const shipment_number = shipping.dataValues.shipment_number;
+
+    console.log(shipment_number);
 
     // Send JSON response with shipping details
     return res
       .status(200)
-      .redirect(`/details?shipment_number=${shipping.shipment_number}`);
+      .redirect(`/details?shipment_number=${shipment_number}`);
   } catch (error) {
     console.error("Error processing tracking request:", error);
     const indexPath = path.join(__dirname, "Pages", "404.html");
     res.status(500).sendFile(indexPath);
   }
+});
+
+app.get("/details", async (req, res) => {
+  try {
+    const { shipment_number } = req.query;
+
+    console.log(shipment_number);
+
+    const shippingDetails = await Shipping.findOne({
+      where: { shipment_number },
+    });
+
+    if (!shippingDetails) {
+      return res.status(404).redirect("/not-found");
+    }
+    res
+      .status(200)
+      .render("details.ejs", { shipping: shippingDetails.dataValues });
+  } catch (error) {
+    console.error("Error fetching shipping details:", error);
+    const indexPath = path.join(__dirname, "Pages", "404.html");
+    res.status(500).sendFile(indexPath);
+  }
+});
+
+app.get("*", (req, res) => {
+  res.status(404).sendFile(path.join(__dirname, "Pages", "404.html"));
 });
 
 app.listen(port, () => {
